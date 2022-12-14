@@ -116,7 +116,7 @@ with preprocessing:
     st.write(scaled_features)
 
     st.subheader('Target Label')
-    dumies = pd.get_dummies(df.Species).columns.values.tolist()
+    dumies = pd.get_dummies(df.blue).columns.values.tolist()
     dumies = np.array(dumies)
 
     labels = pd.DataFrame({
