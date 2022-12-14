@@ -19,12 +19,12 @@ st.title("PENAMBANGAN DATA C")
 data_set_description, upload_data, preprocessing, modeling, implementation = st.tabs(["Data Set Description", "Data", "Preprocessing", "Modeling", "Implementation"])
 
 with data_set_description:
-    st.write("##### Nama  : Ahlaqul Karimah M ")
-    st.write("##### Nim   : 200411100008 ")
+    st.write("##### Nama  : elmatiaaa")
+    st.write("##### Nim   : 200411100113 ")
     st.write("##### Kelas : Penambangan Data C ")
     st.write("""# Data Set Description """)
-    st.write("###### Data Set Ini Adalah : Classification on Fish market (Klasifikasi dipasar ikan) ")
-    st.write("###### Sumber Data Set dari Kaggle : https://www.kaggle.com/code/hongsean/tutorial-knn-classification-on-fish-market/notebook")
+    st.write("###### Data Set Ini Adalah : Mobile Price Classification) ")
+    st.write("###### Sumber Data Set dari Kaggle : https://www.kaggle.com/code/akshitmadan/mobile-price-classification-knn/data")
     st.write("""###### Penjelasan setiap kolom : """)
     st.write("""1. Species (Jenis ) :
     
