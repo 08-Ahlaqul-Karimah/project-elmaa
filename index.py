@@ -61,7 +61,7 @@ with data_set_description:
     tempmax * tempmin
     wind
     """)
-    st.write("""Mengklasifikasi ikan di pasar   (output) :
+    st.write("""Mobile Price Classification   (output) :
     
     1. Bream    : istilah umum bagi sejumlah spesies ikan air tawar dan ikan laut dari beragam genus yang meliputi: Abramis (misalnya A. brama, terkadang disebut bream air tawar).
     2. Parkki   : 
@@ -72,7 +72,7 @@ with data_set_description:
     7. Whitefish: adalah satu istilah perikanan yang merujuk kepada beberapa spesies ikan demersal dengan sirip, khususnya kod (Gadus morhua), whiting (Merluccius bilinearis), dan haddock (Melanogrammus aeglefinus).
     
     """)
-    st.write("###### Aplikasi ini untuk : Classification on Fish market (Klasifikasi ikan di Pasar) ")
+    st.write("###### Aplikasi ini untuk : Mobile Price Classification (Klasifikasi ikan di Pasar) ")
     st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link : https://github.com/08-Ahlaqul-Karimah/project-data-mining ")
 
 with upload_data:
@@ -81,7 +81,7 @@ with upload_data:
     #     df = pd.read_csv(uploaded_file)
     #     st.write("Nama File Anda = ", uploaded_file.name)
     #     st.dataframe(df)
-    df = pd.read_csv('https://raw.githubusercontent.com/08-Ahlaqul-Karimah/machine-Learning/main/Fish.csv')
+    df = pd.read_csv('https://raw.githubusercontent.com/08-Ahlaqul-Karimah/machine-Learning/main/test.csv')
     st.dataframe(df)
 
 with preprocessing:
@@ -94,10 +94,10 @@ with preprocessing:
     - min = nilai minimum semua data asli
     - max = nilai maksimum semua data asli
     """)
-    df = df.drop(columns=['Length2','Length3'])
+    df = df.drop(columns=['id',])
     #Mendefinisikan Varible X dan Y
-    X = df[['Weight','Length1','Height','Width']]
-    y = df['Species'].values
+    X = df[['battery_power', 'clock_speed', 'fc', 'int_memory', 'm_dep', 'mobile_wt', 'n_cores', 'pc', 'px_height', 'px_width', 'ram', 'sc_h', 'sc_w', 'talk_time']]
+    y = df['blue','dual_sim', 'four_g', 'three_g', 'touch_screen', 'wifi' ].values
     df
     X
     df_min = X.min()
@@ -122,11 +122,7 @@ with preprocessing:
     labels = pd.DataFrame({
         '1' : [dumies[0]],
         '2' : [dumies[1]],
-        '3' : [dumies[2]],
-        '4' : [dumies[3]],
-        '5' : [dumies[4]],
-        '6' : [dumies[5]],
-        '7' : [dumies[6]],
+
         
     })
 
@@ -250,10 +246,21 @@ with modeling:
 with implementation:
     with st.form("my_form"):
         st.subheader("Implementasi")
-        Weight = st.number_input('Masukkan berat ikan (Weight) : ')
-        Length1 = st.number_input('Masukkan panjang vertikal ikan (Length1) : ')
-        Height = st.number_input('Masukkan tinggi ikan (Height) : ')
-        Width = st.number_input('Masukkan lebar ikan (Width) : ')
+        battery_power = st.number_input('masukkan Total energi yang dapat disimpan baterai dalam satu waktu diukur dalam mAh (battery power) : ')
+        clock_speed = st.number_input('masukkan kecepatan di mana mikroprosesor mengeksekusi instruksi (clock speed) : ')
+        fc = st.number_input('masukkan Kamera depan mega piksel (fc) : ')
+        int_memory = st.number_input('masukkan Memori Internal dalam Gigabyte (int_memory) : ')
+        m_dep = st.number_input('masukkan Kedalaman Seluler dalam cm (m_dep) : ')
+        mobile_wt = st.number_input('masukkan Berat ponsel (mobile_wt) : ')
+        n_cores = st.number_input('masukkan Jumlah inti prosesor (n_cores) : ')
+        pc = st.number_input('masukkan Mega piksel Kamera Utama (pc) : ')
+        px_height = st.number_input('masukkan Tinggi Resolusi Piksel (px_height) : ')
+        px_width = st.number_input('masukkan lebar Resolusi Piksel (px_width) : ')
+        ram = st.number_input('masukkan Memori Akses Acak dalam Megabita (ram) : ')
+        sc_h = st.number_input('masukkan Tinggi layar ponsel dalam cm (sc_h) : ')
+        sc_w = st.number_input('masukkan Lebar layar ponsel dalam cm (sc_w) : ')
+        talk_time = st.number_input('masukkan waktu terlama satu kali pengisian daya baterai akan bertahan saat Anda berada (talk_time) : ')
+      
         
         model = st.selectbox('Pilihlah model yang akan anda gunakan untuk melakukan prediksi?',
                 ('Gaussian Naive Bayes', 'K-NN', 'Decision Tree'))
@@ -261,10 +268,20 @@ with implementation:
         prediksi = st.form_submit_button("Submit")
         if prediksi:
             inputs = np.array([
-                Weight,
-                Length1,
-                Height,
-                Width
+                battery_power, 
+                clock_speed, 
+                fc, 
+                int_memory, 
+                m_dep, 
+                mobile_wt, 
+                n_cores, 
+                pc, 
+                px_height, 
+                px_width, 
+                ram, 
+                sc_h, 
+                sc_w, 
+                talk_time
             ])
 
             df_min = X.min()
